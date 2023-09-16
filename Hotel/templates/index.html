@@ -1,0 +1,96 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  background-color: #dddddd;
+}
+</style>
+</head>
+{% comment %} <title>{% block title %}{% endblock %}</title>
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<body>
+    
+    <p>Welcome to India's Hotel </p>
+    <p>Please select your choice</p>
+    
+    <ul>
+      <li><a href="home">Home</a></li>
+      <li><a href="indore_hotel">Indore Hotels</a></li>
+      <li><a href="pune_hotel">Pune Hotels</a></li>
+      <li><a href="mumbai_hotel">Mumbai Hotels</a></li>
+    </ul>
+    <p>Please Fill Details for Hotel Inquery</p>
+    <form action = "#" method = "post">
+      {% csrf_token %}
+      {{form.as_p }}
+      <input type="submit" value="Submit">
+    </form> 
+
+
+</body>
+</html> {% endcomment %} 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% load static %}
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav bg-info">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/home">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/indore_hotel">Indore Hotels</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/pune_hotel">Pune Hotels</a>
+    </li>    
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/mumbai_hotel">Mumbai Hotels</a>
+    </li>
+  </ul>
+  <div>
+    <img width = "100%" height= "100%"src="{% static 'images/1.jpg' %}" alt="My Image">
+    <img width = "33%" height= "33%"src="{% static 'images/2.jpg' %}" alt="My Image">
+    <img width = "33%" height= "33%"src="{% static 'images/3.jpg' %}" alt="My Image">
+    <img width = "33%" height= "33%"src="{% static 'images/4.jpg' %}" alt="My Image">
+</div>
+  {% comment %} <div class="row">
+    <div class="col-sm">
+        <h3 class="text-center alert alert-info">Please Fill Details for Hotel Inquery </h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type ="submit" class="btn btn-success" value="Submit">
+        </form>
+    </div> {% endcomment %}
+
+  {% block content %}
+  {% endblock %}
+</div>
+</body>
+</html>
